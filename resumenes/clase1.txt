@@ -1,0 +1,22 @@
+Prototipos de funcion, sin la espeficicación el compilador supone que la funcion toma int como argumentos y return otro int, lo que puede causar errores
+
+funcion_name(type a, type b, ...) => Prototipo de función 
+los nombres de los parametros no importan, solo los tipos
+
+El tipo de un dato determina el conjunto de valores que puede tomar disho dato y las operaciones que se pueden realiar sobre el
+
+hace falta definir el tipo de la variable cuando uso char, puede ser signed o unsigned
+
+Si quiero copiar 2 bytes en 1 siempre asigna el byte menos significativo
+
+definir constantes:
+- enum días { lista_de_constantes } ;
+ejemplo enum días {LUNES=0, MARTES, MIERCOLES, JUEVES, VIERNES};
+
+o también puedo asignar valores especificos 
+
+enum nombres {SANTIAGO=1, MARCOS=121}; 
+
+constantes simbólicas:
+
+# define NOMBRE VALOR

@@ -1,0 +1,12 @@
+OPERADORES Y EXPRESIONES.
+
+En el lenguaje C, una expresión está compuesta de terminos y opeadores
+Término:
+	- Una constante
+	- Una variable
+	- Una invocación a función
+	- Una expresión
+
+
+Operadores relacionales:
+	-

@@ -1,0 +1,12 @@
+Variables:
+	Atributos:
+		- Tipos
+		- Valor izquierdo
+		- Valor derecho
+		- Nombre
+	Identificador en C:
+		- Primera letra: Letra o _
+		- Luego letra, dígito o guión de subrayado
+		- Son case sensitive
+	- Para poder usar una variable, la misma debe ser declarada previamente
+	- typedef tipoDeDato alias
