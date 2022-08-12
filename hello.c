@@ -3,21 +3,25 @@
 
 int main()
 {
-	printf("Nuevo push y esta vez sin entrar password\n");
-	printf("Hello, world!\n");
-	printf("Hello, world!\n");
-	printf("Hello, world!\n");
-	
-	int c;
-	float a = 1.9;
-	double x = 1.9;
-	c = ( a == x);
-	printf("c: %d\n", c);	
+	enum días {Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo};
+	enum días hoy;
+	switch (hoy) {
+		case Lunes: puts("Lunes");
+		case Martes: puts("Martes");
+		case Miercoles: puts("Miercoles");
+		case Jueves: puts("Jueves");
+		case Viernes: puts("Viernes");
+		case Sabado: puts("Sabado");
+		case Domingo: puts("Domingo");
+		default: puts("Invalido");
+	}
 	return 0;
-
-	unsigned char a = 8;
-	printf("a: %d\n", a<<);
 }
 
+#include <stdio.h>
 
+int
+main(void)
+{
 
+}
