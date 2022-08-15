@@ -6,6 +6,9 @@ main(void)
 {
 	signed char c;
 	while ((c = getchar()) != EOF){ 
-		putchar((c == ' ') ? '\0' : c);
+		while (c == ' ') {
+			putchar('\0');
+		}
+
 	}
 }
