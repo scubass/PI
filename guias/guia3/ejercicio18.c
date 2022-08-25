@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../getnum2.c"
+#include "../getnum.h"
 long int factorial(long int num);
 
 int

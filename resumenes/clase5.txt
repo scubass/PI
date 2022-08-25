@@ -1,0 +1,12 @@
+- Preprocesador
+
+. Eliminación de comentarios
+. Inclusión de archivos
+. Sustitución de MACROS
+. Compilacion condicional
+. No analiza la sintaxis de C
+
+
+para escribir una macro en varias líneas hay que agregar \ al final de cada línea
+para escribir una macro en varias líneas hay que agregar una slash al final de cada una de las mismas 
+

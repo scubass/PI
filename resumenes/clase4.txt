@@ -1,0 +1,1 @@
+toda variable tiene 4 atributos, nombre tipo valor derecho(valor real) y valor izquierdo(dirección de memoria)
