@@ -14,14 +14,12 @@ int main()
 		case Sabado: puts("Sabado");
 		case Domingo: puts("Domingo");
 		default: puts("Invalido");
+
+
+
 	}
+
+	int numebr = 0;
+	for
 	return 0;
-}
-
-#include <stdio.h>
-
-int
-main(void)
-{
-
 }
