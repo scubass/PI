@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include "guias/getnum.h"
 
 int
 main(void)
 {
-	printf("Hello world\n");
+	int number = getint("Ingrese un número señor");
+	printf("el número ingresado es: %d\n", number);
+	printf("Hello world, asi estamos ahora si anda esto\n");
 }
