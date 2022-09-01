@@ -1,38 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <math.h>
 #define ARRAY_SIZE 4
-int biggest_dif(const int arr[], int length);
+#define EPSILON 0.000001
+double maxDiferencia(const double arr[]);
 int length(const int arr[]);
 
-int
-main (void)
-{
-	int arr[ARRAY_SIZE] = {50, 102, 100, 90};
-	printf("%d\n", arr[1] - arr[0]);
+int main(void) {
 
-	printf("biggest difference: %d\n", biggest_dif(arr, ARRAY_SIZE));
+  double v[] = {1.0, 0.0};
+  assert(fabs(maxDiferencia(v))==0.0);
 
-	return 0;
+  double v2[] = {1.0, 1.0, 1.0, 0.0};
+  assert(fabs(maxDiferencia(v2))==0.0);
+
+  double v3[] = {1.5, 3.0, -1.0, 0.0};
+  assert(fabs(maxDiferencia(v3) - 4.0) < EPSILON);
+
+  double v4[] = {1.5, 3.0, 4.5, 3.0, 0.0};
+  assert(fabs(maxDiferencia(v4) -1.5) < EPSILON);
+
+  double v5[] = {2.5, 1.0, 1.5, 2.0, 0.0};
+  assert(fabs(maxDiferencia(v5)- 1.5) < EPSILON );
+
+  double v6[] = {1.5,  -1.0, 3.0, 0.0};
+  assert(fabs(maxDiferencia(v6) - 4.0) < EPSILON);
+
+  puts("Todo OK!");
+  return 0;
 }
 
-int
-biggest_dif(const int arr[], int length) 
+
+
+double
+maxDiferencia(const double arr[]) 
 {
+	
+	int length = 0;
+
+	for (int i = 0; arr[i] != 0; i++) {
+		length++;
+	}
+
 	if (length == 1) {
 		return 0;
 	}
 	
-	int difference = abs(arr[1] - arr[0]);
-	int aux_difference;
+	double difference = fabs(arr[1] - arr[0]);
+	double aux_difference;
 
 	if (length == 2) {
 		return difference;
 	}
 
 	for (int i = 2; i < length; i++) {
-		aux_difference = abs(arr[i] - arr[i - 1]);
-		printf("aux difference: %d\n", aux_difference);
-		printf("difference: %d\n", difference);
+		aux_difference = fabs(arr[i] - arr[i - 1]);
 		if (aux_difference > difference) {
 			difference = aux_difference; 
 		}
