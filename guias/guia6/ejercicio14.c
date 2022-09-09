@@ -31,3 +31,48 @@ int main(void) {
 
   printf("OK!\n");
   return 0;
+
+}
+
+
+int
+contiene(const int v1[], unsigned int dim1, const int v2[], unsigned int dim2)
+{
+	int condicion1 = 0;
+	int condicio2 = 0;
+	int primera_inclusion = 1;
+	int segunda_inclusion = 1;
+	// chequeo v1 dentro de v2
+	for (int i = 0; i < dim1 && primera_inclusion != 0; i++) {
+		for (int j = 0; j < dim2 && condicion1 != 1; j++) {
+			if (v1[i] == v2[j]) {
+				condicion1 = 1;
+			}
+		}
+		if (!condicion1) {
+			primera_inclusion = 0;
+		}
+		condicion1 = 0;
+	}
+	for (int i = 0; i < dim2 && segunda_inclusion != 0; i++) {
+		for (int j = 0; j < dim1 && condicio2 != 1; j++) {
+			if (v2[i] == v1[j]) {
+				condicio2 = 1;
+			}
+		}
+		if (!condicio2) {
+			segunda_inclusion = 0;
+		}
+		condicio2 = 0;
+	}
+
+
+	if (primera_inclusion != 0) {
+		return 1;
+	} else if (segunda_inclusion != 0) {
+		return 2;
+	}
+	return 0;
+}
+
+

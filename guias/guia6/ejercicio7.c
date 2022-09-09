@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
-int unirArreglos ( const int ar1[], const int ar2[], int resultado[]);
-
+void unirArreglos ( const int ar1[], const int ar2[], int resultado[]);
+int llenar_primero(const int ar1[], int resultado[]);
 
 void check(const int v1[], const int v2[]) {
   int i;
@@ -39,49 +39,6 @@ void check(const int v1[], const int v2[]) {
 //   printf("OK!\n");
 //   return 0;
 // }
-int
-main() {
-	int v1[] ={1, 2, 3, 4, 7, -1};
-	int v2[] = {3, 4, 5, 6, 7, 8, -1};
-	int res[20];
-	int index = unirArreglos(v1, v2, res) + 1;
-	for (int i = 0; i < index; i++) {
-		printf("%d\n", res[i]);
-	}
-	return 0;
-}
-
-
-int
-unirArreglos ( const int ar1[], const int ar2[], int resultado[])
-{
-	int i, h, j, index, repetido = 0;
-	// cargo ar1 en resultado
-	for (i = 0; ar1[i] != -1; i++) {
-		resultado[i] = ar1[i];
-	}
-	// ahora voy a iterar a través de ar2 y veo si algún elemento no está en resultado lo agrego.
-	index = i;
-
-	for (h = 0; ar2[h] != -1; h++) {
-		for (j = 0; j < i && repetido != 1; j++) {
-			if (ar2[h] == resultado[j]) {
-				repetido = 1;
-			}
-		}
-
-		// si no encontré el número en reresultado lo agrego
-		if (repetido != 1) {
-			resultado[index] = ar2[h];
-			index++;
-		}
-	}
-	resultado[index] = -1;
-	return index; 
-
-}
-
-
 
 
 

@@ -2,89 +2,51 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
-unsigned long identify_ip(unsigned long ip, unsigned char bitsNet);
-int decimal_to_binary(int);
-int binary_to_decimal(int);
+#include <math.h>
+
+unsigned long separate_ip(unsigned long ip, unsigned char bitsNet);
+
 
 int
 main (void)
 {
-	identify_ip(1921680100, 23);
+	separate_ip(0xC0A80064, 16);
+	return 0;
 }
 
 unsigned long
-identify_ip (unsigned long ip, unsigned char bitsNet)
+separate_ip(unsigned long ip, unsigned char bitsNet)
 {
-	unsigned long b1 = 0, b2 = 0, b3 = 0, b4 = 0;
-	int counter = 0;
-	int position = 1;
-	printf("ip: %lu\n", ip);
-	while (counter < 8) {
-		b4 += (ip % 2) * position;
-		position *= 10;
-		counter++;
-		ip /= 2;
-	}
-	counter = 0;
-	while (counter < 8) {
-		b3 += (ip % 2) * position;
-		position *= 10;
-		counter++;
-		ip /= 2;
-	}
-	counter = 0;
-	while (counter < 8) {
-		b2 += (ip % 2) * position;
-		position *= 10;
-		counter++;
-		ip /= 2;
-	}
-	counter = 0;
-	while (counter < 8) {
-		b1 += (ip % 2) * position;
-		position *= 10;
-		counter++;
-		ip /= 2;
-	}
-	printf("%d\n", decimal_to_binary(b1));
-	printf("%d\n", decimal_to_binary(b2));
-	printf("%d\n", decimal_to_binary(b3));
-	printf("%d\n", decimal_to_binary(b4));
-	return 0;
-}
-
-int
-decimal_to_binary(int number)
-{
-	if (isalnum(number) == 1) {printf("Please input a number\n"); return -1;}
-	int binary = 0;
-	int position = 1;
-	while (number != 0) {
-		binary += (number % 2) * position;
-		position *= 10;
-		number /= 2;
-	}
-	printf("%d\n", binary);
-
-	return 0;
+	unsigned long red, host;
+	unsigned long red_mask = pow(2, bitsNet) - 1;
+	unsigned long host_mask = pow(2, 32 - bitsNet) - 1;
+	red = bitsNet & red_mask;
+	ip >>= bitsNet;
+	host = ip & host_mask;
 	
-}
 
-int
-binary_to_decimal(int number)
-{
-	int decimal = 0;
-	int position = 1;
-	while (number != 0) {
-		decimal += number % 10 * position;
-		number /= 10;
-		position *= 2;
-	}
-	printf("%d\n", decimal);
+	// printf("red\n");
+	// while (red != 0) {
+	// 	printf("%lu\n", (red >> 8) & 255);
+	// 	red >>= 8;
+	// 	printf("red: %lu\n", red);
+	//
+	// }
+	// printf("host\n");
+	// while (host != 0) {
+	// 	printf("%lu\n", (host >> 8) & 255);
+	// 	host >>= 8;
+	// }
+	//
+	printf("%lu\n", red >> 24 & 255);
+	// red >>= 8;
+	printf("%lu\n", red >> 16 & 255);
+	// red >>= 8;
+	printf("%lu\n", red >> 8 & 255);
+	red >>= 8;printf("%lu\n", red & 255);
 	return 0;
+
 }
-
-
 
 
 

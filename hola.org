@@ -1,0 +1,41 @@
+#+title: Hola
+
+* Seguimos con arrays
+
+- Ejemplo:
+  #+BEGIN_SRC c
+  int contador(const int v[], unsigned int dim, int num) {
+    int counte = 0;
+    for (int i = 0; i < dim; i++) {
+        if (v[i] == num) {
+            counter++;
+        }
+    }
+
+    return counter;
+  }
+  #+END_SRC
+
+
+- Ejemplo 2:
+  #+BEGIN_SRC c
+  int pertenece (const int v[], unsigned int dim, int num) {
+    int counter = 0;
+    for (int i = 0; i < dim && counter == 0; i++) {
+        if (v[i] == num) {
+            counter++;
+        }
+    }
+
+    return counter;
+}
+#+END_SRC
+
+** Ahora parece que sin el plugin esto si anda bien
+   por ejemplo esto es en un level 2 header sin ningun tipo de problemas 
+   y parace andar bien
+   anda a saber q le pasa al plugin este 
+   ahora vamos a ver si nos damos cuenta 
+
+
+   seguimos en el buffer de level, menor a esto no se puede conseguirm esto es desde doom emacs

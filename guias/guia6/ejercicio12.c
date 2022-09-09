@@ -2,7 +2,8 @@
 #include <assert.h>
 
 #define DIMMAX 6
-
+void traspuesta(int matrix[][DIMMAX], unsigned int dim);
+#define SWAP(x, y, t) t aux = x; x = y; y = aux;
 
 int main(void) {
 
@@ -32,12 +33,36 @@ int main(void) {
   traspuesta(m, DIMMAX);
   for(int i=0; i < DIMMAX; i++) {
     for(int j=0; j < DIMMAX; j++)
-      assert(m[i][j] == t[i][j]);
+	assert(m[i][j] == t[i][j]);
   }
 
 
   printf("OK!\n");
-}// Ejercicio 12 *
+}
+
+
+
+
+void
+traspuesta(int matrix[][DIMMAX], unsigned int dim)
+{
+	for (int i = 0; i < dim; i++) {
+		for (int j = 0; j < (i + 1); j++) {
+			int aux = matrix[i][j];
+			matrix[i][j] = matrix[j][i];
+			matrix[j][i] = aux;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+// Ejercicio 12 *
 // Escribir una función que cambie una matriz cuadrada por su traspuesta, recibiendo sólo los siguientes 2
 // parámetros:
 // ● la matriz cuadrada

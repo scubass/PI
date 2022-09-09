@@ -1,0 +1,37 @@
+* Clase del 06/09 PUNTEROS
+
+  #+BEGIN_SRC c
+  void 
+  swap(int vector[2]) {
+	int aux = vector[0];
+  	vector[0] = vector[1];
+  	vector[1] = aux;
+  }
+  #+END_SRC
+
+
+** Puntero:
+   1) es un nuevo tipo de dato, es básicamente una variable q almacena la ddirección de otra, formalmente es una vavariable, cuyo valor derecho es el valor izquierdo de otra variable
+*** Sintaxis
+    tipoApuntado * nombreDePuntero;
+** Operador &
+   - se aplica a un l-value y devuelve la dirección de memoria donde dicho l-value está almacenado
+   - Solamente se lo pudo aplicar a algo q es una variable
+
+** Operador *
+   Se aplica a un tipo puntero y desenvuelve el r-value al cual apunta. Se dice que desreferencia al puntero, obteniendo el valor apuntado por él.
+
+** NULL
+   Constante simbólica (definida en stdlib.h) utilizada para indicar que un puntero apunta a "nada".
+
+
+
+** Ejemplos
+
+   #+BEGIN_SRC c
+   int numero = 100;
+   int * p_numero = &numbero;
+   printf("p_numero: %p\n", p_numero);
+   printf("y si desreferencio el pointer %d\n", *p_numero);
+   
+   #+END_SRC
