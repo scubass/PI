@@ -22,10 +22,10 @@ int
 main(void)
 {
  	unsigned char arreglo2[] = { 0x33, 0x33, 0x33, 0x33, 0x33 };
-	// double number = desv(arreglo2, 5);
-	// for(int i=0; i <= 10; i++)
-	// 	assert(desv(arreglo2, i)==0);
-
+	double number = desv(arreglo2, 5);
+	for(int i=0; i <= 10; i++)
+		assert(desv(arreglo2, i)==0);
+//
 	unsigned char arreglo[] = { 0x37, 0xF2, 0x03, 0x4A, 0xFF };
 	printf("aca señor %g\n", desv(arreglo, 1));
 	printf("aca señor %g\n", desv(arreglo, 5));

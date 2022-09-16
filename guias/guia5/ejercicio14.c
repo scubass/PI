@@ -10,7 +10,7 @@ unsigned long separate_ip(unsigned long ip, unsigned char bitsNet);
 int
 main (void)
 {
-	separate_ip(0xC0A80064, 16);
+	separate_ip(0x10FF1112 , 24);
 	return 0;
 }
 
@@ -18,32 +18,32 @@ unsigned long
 separate_ip(unsigned long ip, unsigned char bitsNet)
 {
 	unsigned long red, host;
-	unsigned long red_mask = pow(2, bitsNet) - 1;
-	unsigned long host_mask = pow(2, 32 - bitsNet) - 1;
-	red = bitsNet & red_mask;
-	ip >>= bitsNet;
-	host = ip & host_mask;
+	unsigned long red_mask = pow(2, 32 - bitsNet) - 1;
+	unsigned long host_mask = pow(2, bitsNet) - 1;
 	
+	host = ip & host_mask;
+	red = ip & red_mask;
 
-	// printf("red\n");
-	// while (red != 0) {
-	// 	printf("%lu\n", (red >> 8) & 255);
-	// 	red >>= 8;
-	// 	printf("red: %lu\n", red);
-	//
-	// }
-	// printf("host\n");
-	// while (host != 0) {
-	// 	printf("%lu\n", (host >> 8) & 255);
-	// 	host >>= 8;
-	// }
-	//
-	printf("%lu\n", red >> 24 & 255);
+	// unsigned long byte_4 = red & 255;
 	// red >>= 8;
-	printf("%lu\n", red >> 16 & 255);
+	// unsigned long byte_3 = red & 255;
 	// red >>= 8;
-	printf("%lu\n", red >> 8 & 255);
-	red >>= 8;printf("%lu\n", red & 255);
+	// unsigned long byte_2 = red & 255;
+	// red >>= 8;
+	// unsigned long byte_1 = red & 255;
+	// printf("%lu.%lu.%lu.%lu\n", byte_1, byte_2, byte_3, byte_4);
+	
+	printf("red: %lu\nhost: %lu\n", red, host);
+	
+	unsigned long byte1 = host & 255;
+	host >>= 8;
+	unsigned long byte2 = host & 255;
+	host >>= 8;
+	unsigned long byte3 = host &  255;
+	host >>= 8;
+	unsigned long byte_4 = host & 255;
+	printf("%lu.%lu.%lu.%lu\n", byte1, byte2, byte3, byte_4);
+
 	return 0;
 
 }

@@ -84,8 +84,9 @@ chequearSudoku(char m[][DIM])
 	int suma_condiciones = 3;
 	int condicion1 = 1, condicion2 = 1, condicion3 = 1;
 	for (int i = 0; i < DIM && suma_condiciones == 3; i++) {
+		condicion2 = check_line(m, i);
 		for (int j = 0; j < DIM && suma_condiciones == 3; j++) {
-			condicion1 = check_box(m, i, j);
+			// condicion1 = check_box(m, i, j);
 			condicion2 = check_line(m, i);
 			condicion3 = check_column(m, j);
 			suma_condiciones = condicion1 + condicion2 + condicion3;

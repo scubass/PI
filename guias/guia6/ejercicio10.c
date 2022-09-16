@@ -23,6 +23,11 @@ int random_range(int bottom, int top);
 void fill_matrix(int matrix[LINE][COLUMN]);
 int check_star(int matrix[LINE][COLUMN], int line, int column);
 void fill_sky(int sky[LINE][COLUMN], int matrix[LINE][COLUMN]);
+int recorrer(int v[LINE][COLUMN], int fila, int columna);
+
+#define MIN(a,b) ((a)<(b)?(a):(b))
+#define MAX(a,b) ((a)>(b)?(a):(b))
+
 
 int
 main(void)
@@ -40,24 +45,26 @@ main(void)
 		{10, 7, 9, 15, 6, 7, 8, 9, 11, 12, 13, 15, 8, 10, 1, 10, 14, 15, 18, 20, 11, 8, 2, 3, 12, 23, 11, 3, 9, 20},
 		{10, 17, 16, 15, 6, 7, 8, 9, 11, 12, 13, 15, 8, 10, 11, 3, 14, 15, 18, 20, 11, 8, 2, 3, 12, 23, 11, 3, 9, 20},
 	};
-	// fill_matrix(matrix);
 	int sky[LINE][COLUMN];
+
+	puts("A continuación su función debe mostrar esto:");
+	puts(" **     **      *****    *");
+ 	puts(" *              *****   ***");
+	puts("         *      *****   ***");
+	puts("   *     ****  ******   ***");
+	puts(" ****    ***   ******   ***");
+	puts(" ****   *****  ******   ***");
+	puts("   *    *****   *****   ***");
+	puts(" **     *****   *****   ***");
+
+	puts("---------------------------------");
+	puts("---------------------------------");
 	fill_sky(sky, matrix);
 	graficar(sky);
 	return 0;
 }
 
 
-int
-normalize_line(int number) 
-{
-	if (number == 0) {
-		return 0;
-	} else if (number == COLUMN || number == LINE) {
-		return number - 2;
-	}
-	return number - 1;
-}
 
 
 void
@@ -75,31 +82,11 @@ random_range(int bottom, int top)
 	return (rand() % (top - bottom + 1)) + bottom;  
 }
 
-int
-check_star(int matrix[LINE][COLUMN], int line, int column) {
-	int sum = 0;
-	int _line = normalize_line(line);
-	int _column = normalize_line(column);
-	for (int i = _line; i < (_line + 3); i++) {
-		for (int j = _column; j < (column + 3); j++) {
-			sum += matrix[i][j];
-		}
-	}
-
-	int condition = (sum / 9) > 10;
-	if (condition) {
-		return 1;
-	} else {
-		return 0;
-	}
-
-} 
-
 void
 fill_sky(int sky[LINE][COLUMN], int matrix[LINE][COLUMN]) {
 	for (int i = 0; i < LINE; i++) {
 		for (int j = 0; j < COLUMN; j++) {
-			if (check_star(matrix, i, j)) {
+			if ((recorrer(matrix, i, j) / 9) > 10) {
 				sky[i][j] = '*';
 			}
 			else {
@@ -114,8 +101,21 @@ void
 graficar(int sky[LINE][COLUMN]) {
 	for (int i = 0; i < LINE; i++) {
 		for (int j = 0; j < COLUMN; j++) {
-			printf("%c ", sky[i][j]);
+			printf("%c", sky[i][j]);
 		}
 		printf("\n");
 	}
 }
+
+int
+recorrer(int v[LINE][COLUMN], int fila, int columna)
+{
+	int suma = 0;
+	for (int i = MAX(0, fila - 1) ; i <= MIN(LINE - 1, fila + 1) ; i++) {
+		for(int j = MAX(0, columna - 1) ; j <= MIN(COLUMN - 1, columna + 1) ; j++) {
+			suma += v[i][j];
+		}
+	}
+	return suma;
+}
+

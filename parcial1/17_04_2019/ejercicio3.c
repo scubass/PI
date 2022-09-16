@@ -31,21 +31,22 @@ int
 es_ascendente(int matriz[DIM][DIM], int dim, int vec[DIM])
 {
 	int index = 0;
+
 	int es_ascendente = 1;
 
-	for (int i = 1; i < DIM && es_ascendente != 0; i++) {
-		for (int j = 1; j < DIM && es_ascendente != 0; j++) {
-			if (matriz[i][j] < matriz[i][j - 1] || matriz[i][j] < matriz[i - 1][j]) {
-				es_ascendente = 0;
-			}
-			if (i == DIM - 1) {
-				v[index] = matriz[]
-			}
-			vec[index] = matriz[i - 1][j - 1];
-			index++;
+	for (int i = 0; i < dim && es_ascendente != 0; i++) { 
+		for (int j = 0; j < dim && es_ascendente != 0; j++) {
+			if (i != dim - 1 && j != dim - 1) {
+				if (matriz[i][j] > matriz [i][j + 1] || matriz[i][j] > matriz[i + 1][j]) {
+					es_ascendente = 0;
+				}
+			} 
+
+			vec[index++] = matriz[i][j];
 		}
 	}
-	return es_ascendente;
+	return index;
+
 }
 
 
