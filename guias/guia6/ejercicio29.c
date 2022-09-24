@@ -4,32 +4,32 @@
 #include <string.h>
 
 
-void deleteChars(char s1[], char s2[]) {
-	int i = 0, j = 0, count1 = 0, count2 = 0;
+void deleteChars(char s1[], char s2[])
+{
+	int i = 0, j = 0;
+	int indx1 = 0, indx2 = 0;
 
-	// mientras q ninguno de los 2 sea '\0'
-	while(s1[i] || s2[j]) {
-		// si son iguales sigo
+	while(s1[i] != 0 || s2[j] != 0) {
+		// si son iguales no los quiero asi que apunto a la siguiente posicion
 		if (s1[i] == s2[j]) {
 			i++;
 			j++;
 		}
-		else {
-			// si s1[i] != '\0' poneme en s1[count1] lo q le sigue a s1[i], ejemplo 
-			// "hola" con "fhas" aca en h como son diferentes en luger de h pone la o
-			// me parece que mueve el próximo cracter hacia la izquierda
-			if (s1[i]) {
-				s1[count1++] = s1[i++];
+		// si no son iguales, chequeo para cada uno q no esten vacios, si no apunta al final del string lo copio
+		else  {
+			if(s1[i]) {
+			s1[indx1++] = s1[i++];
 			}
-			// hace lo mismo pero con s2
+		
 			if (s2[j]) {
-				s2[count2++] = s2[j++];
-			}
-
+			s2[indx2++] = s2[j++];
+			} 
+		 
 		}
 	}
-	s1[count1] = 0;
-	s2[count2] = 0;
+	// finalmente agrego el caracter nulo para indicar el fin de los strings
+	s1[indx1] = 0;
+	s2[indx2] = 0;
 }
 
 int main(void) {
