@@ -4,7 +4,7 @@
 
 void bubble_sort(int array[], int dim);
 
-#define MAXCOL 10
+#define MAXCOL 5
 
 /* Ordena por el método de burbujeo */
 void ordenaMatriz (int matriz[][MAXCOL], int fil, int col, int colOrd);

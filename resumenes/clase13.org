@@ -1,0 +1,36 @@
+* Funciones, heap y demás
+
+** sscanf
+   la función funciona como scanf, nada mas que toma el como input un string y no la entrada estandar
+
+** Para leer un string
+   Vamos a crear una función nosotros por que con scanf o sscanf si le pongo un espacio al argumento corta y para evitar eso vamos a tener que crear una ffunción aparte
+
+   #+BEGIN_SRC c
+   int n;
+   char fmt[10];
+
+   do
+   	n = getint("Ingrese la longitud máxima: ");
+   while (n < 1);
+
+   char origi[n + 1];
+   // aca los dobles %% sirven para escapar, al final queda %ns y ahi le especificamos la cantidad de caracteres que tiene que tomar el %s
+   sparinf(fmt, "%%%ds", n);
+   scanf(fmt, orig);
+
+   char copia[strlen(orig) + 1];
+   strcpy(copia, orig);
+   
+   #+END_BEGIN_SRC
+
+** Heap
+   Memoria dinamica, la particularidad es que el heap y el stack es uno solo. Ambos tienen un limite.
+   cuando creo un vector con int v[10]; por ejemplo, como v es una constante al ser un rótulo entonces no lo puedo cambiar
+   Ahora puedo usar una función que me cree un espacio de memeoria y me devuelva un puntero, ahi si lo puedo mover por que un pointer si lo puedo cambiar
+
+   malloc() toma como argumento size_t size, le tengo que pasar sizeof(tipo de dato) * cantidad de elementos de esa variable
+
+   void * es un puntero genérico, representa una ddirección de memoria de cualquier tipo
+*** RECORDAR
+    los tipos se definen en tiempo de compilación, por lo que desreferenciar un poninter void *, no compila
