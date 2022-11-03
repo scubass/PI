@@ -20,6 +20,5 @@ int main()
 	}
 
 	int numebr = 0;
-	for
 	return 0;
 }
