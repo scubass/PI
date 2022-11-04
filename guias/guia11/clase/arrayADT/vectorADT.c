@@ -11,10 +11,13 @@ struct arrayCDT {
 	node * vec;
 	size_t dim; // cantidad de elementos
 	size_t size; // cantidad de elementos reservados
+	compare cmp;
 };
 
-arrayADT new_array() {
-	return calloc(1, sizeof(struct arrayCDT));
+arrayADT new_array(compare cmp) {
+	arrayADT aux = calloc(1, sizeof(struct arrayCDT));
+	aux->cmp = cmp;
+	return aux;
 }
 
 void free_array(arrayADT v) {
@@ -64,5 +67,14 @@ void remove(arrayADT v, size_t idx)	 {
 	if (v->vec[idx].is_used == 1) {
 		v->vec[idx].is_used = 0;
 		v->dim--;
+	}
+}
+
+void deleteAll(arrayADT v, elemType elem) {
+	for (int i = 0; i < v->size ; i++) {
+		if (v->vec[i].is_used == 1 && v->cmp(v->vec[i].elem, elem) == 0) {
+			v->vec[i].is_used = 0;
+			v->dim--;
+		}
 	}
 }

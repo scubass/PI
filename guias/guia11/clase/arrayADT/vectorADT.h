@@ -12,7 +12,8 @@
 typedef struct arrayCDT * arrayADT;
 
 typedef int elemType;
-arrayCDT new_array();
+typedef int (*compare) (elemType e1, elemType e2);
+arrayADT new_array(compare cmp);
 
 void put(arrayADT v, size_t idx, elemType elem);
 
